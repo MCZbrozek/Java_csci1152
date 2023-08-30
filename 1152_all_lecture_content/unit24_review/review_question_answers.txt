@@ -1,0 +1,555 @@
+
+ANSWER STACK PAPER)
+  print(pop()) //print p Stack: a,a,p,p,r
+  print(pop()) //print a Stack: a,p,p,r
+  pop()        //pop     Stack: p,p,r
+  pop()        //pop     Stack: p,r
+  print(pop()) //print p Stack: r
+  push(e)      //push    Stack: e,r
+  print(pop()) //print e Stack: r
+  print(pop()) //print r Stack: 
+
+
+
+ANSWER QUEUE STAR) 
+  dequeue() 		//remove s. Queue: s,t,a,a
+  print(dequeue()) 	//print s. 	Queue: t,a,a
+  print(dequeue()) 	//print t. 	Queue: a,a
+  print(dequeue()) 	//print a. 	Queue: a
+  enqueue(r) 		//enqueue r.Queue: a,r
+  dequeue() 		//remove a. Queue: r
+  print(dequeue()) 	//print r. 	Queue: 
+
+
+
+ANSWER COMPILATION REMOVAL) 
+C)  True, both are removed
+The preprocessor removes whitespace and comments.
+
+
+
+ANSWER SECTIONS A) Section 1 has to be before section 2 because the variable c is declared, initialized, and calculated in section 1, but it is used as the array size in section 2 on this line of code: int[] t2 = new int[c];
+Without section 1, t2 might be initialized to the wrong size.
+
+ANSWER SECTIONS B) Section 2 has to be before section 3 because section 2 initializes t2 and resets to zero c, both of which are used in section 3.
+An error would occur on this line t2[c++] = t[i]; if section 3 was before section 2.
+
+ANSWER SECTIONS C) Swapping the two lines of section 2 would result in t2 being initialized to length zero.
+
+ANSWER SECTIONS D) The program copies all the temperature values that are considered "room temperature" into a new array named room_temperature.
+
+ANSWER SECTIONS E) Informative variable names are important for communicating to other people who might read our code the logic and reasoning behind our design decisions. Informative variables are helpful for others to understand our code and for us to understand our own code if we come back to it after a break.
+
+
+
+ANSWER BAD SORT)
+import java.util.Random;
+public class Testing {
+	public static void main(String[] args) {
+		double[] to_sort = {2.3, 4.1, 3.21, 6.2, 7.3, 2.1, 3.4};
+		badSort(to_sort);
+		for(int i=0; i<to_sort.length; i++)
+			System.out.printf("%.1f  ", to_sort[i]);
+	}
+	public static void badSort(double to_sort[]) {
+		Random rand = new Random();
+		int index1, index2;
+		double temp;
+		for(int i=0; i<1000; i++) {
+			index1 = rand.nextInt(to_sort.length);
+			index2 = rand.nextInt(to_sort.length);
+			//Make sure index1 is the lower index
+			while(index1 >= index2) {
+				index1 = rand.nextInt(to_sort.length);
+				index2 = rand.nextInt(to_sort.length);
+			}
+			//If the values are out of order, swap them
+			if(to_sort[index2] < to_sort[index1]){
+				temp = to_sort[index1];
+				to_sort[index1] = to_sort[index2];
+				to_sort[index2] = temp;
+			}
+		}
+	}
+}
+
+
+
+ANSWER COLLATZ STEP) 
+public static int collatzStep(int x){
+	if(x%2==0) //If x is even
+		return x/2;
+	else
+		return 3*x+1;
+}
+
+
+
+ANSWER DYNAMIC ARRAY)
+1
+2
+4
+8
+16
+32
+64
+128
+It doubles in size 7 times and there are 28 empty spaces available at the end.
+
+
+
+ANSWER REF OR VALUE AND MEMORY) Because a copy of the value is made in memory when passing by value. When passing by reference, a reference to the original value's location in memory is passed instead.
+
+
+
+ANSWER STRING REPEAT) TODO
+
+
+
+ANSWER ARRAY COPY) TODO
+
+
+
+ANSWER ARRAY REVERSE)
+public class Main{
+		public static void main(String[] args){
+		int to_reverse[] = {4,3,3,6,8,2};
+		reverse(to_reverse);
+		for(int i=0; i<to_reverse.length; i++){
+			System.out.printf("%d  ", to_reverse[i]);
+		}
+	}
+	//Here is a solution using a second array
+	public static void reverse(int to_reverse[]){
+		int result[] = new int[to_reverse.length];
+		for(int i=0; i<to_reverse.length; i++){
+			result[i] = to_reverse[to_reverse.length-i-1];
+		}
+		for(int i=0; i<to_reverse.length; i++){
+			to_reverse[i] = result[i];
+		}
+	}
+	//Here is a solution without a second array
+	/*public static void reverse(int to_reverse[]) {
+		int temp;
+		for(int i=0; i<to_reverse.length/2; i++){
+			temp = to_reverse[i];
+			to_reverse[i] = to_reverse[to_reverse.length-i-1];
+			to_reverse[to_reverse.length-i-1] = temp;
+		}
+	}*/
+}
+
+
+
+
+ANSWER COPY EVENS INDEX) Both answers follow
+ANSWER COPY EVENS VALUE) Both answers follow
+public class Main{
+	public static void main(String[] args){
+		int numbers[] = {4,3,3,6,8,2};
+		int evens_copy[] = copyEvenIndexes(numbers);
+		for(int i=0; i<evens_copy.length; i++)
+			System.out.println(evens_copy[i]);
+		System.out.println();
+		evens_copy = copyEvenValues(numbers);
+		for(int i=0; i<evens_copy.length; i++)
+			System.out.println(evens_copy[i]);
+    }
+	public static int[] copyEvenIndexes(int[] numbers){
+		//Determine how big the new array needs to be
+		int length = (numbers.length+1)/2;
+		//Initialize destination array
+		int destination[] = new int[length];
+		//copy the values over
+		for(int i=0; i<numbers.length; i=i+2){
+			destination[i/2] = numbers[i];
+		}
+		return destination;
+	}
+	public static int[] copyEvenValues(int[] numbers){
+		//Determine how big the new array needs to be
+		int length = 0;
+		for(int i=0; i<numbers.length; i++)
+			if(numbers[i]%2==0)
+				length++;
+		//Initialize destination array
+		int destination[] = new int[length];
+		//copy the values over
+		int index = 0;
+		for(int i=0; i<numbers.length; i++){
+			if(numbers[i]%2==0){
+				destination[index] = numbers[i];
+				index++;
+			}
+		}
+		return destination;
+	}
+}
+
+
+
+ANSWER COPY LATTER HALF) TODO
+
+
+
+ANSWER DOUBLE COPY FIRST HALF) TODO
+
+
+
+ANSWER ARRAY DOUBLE REVERSE)
+public static void swapAndReverse(int[] array1, int[] array2){
+	int temp;
+	for(int i=0; i<array1.length; i++){
+		temp = array1[i];
+		array1[i] = array2[array1.length-1-i];
+		array2[array1.length-1-i] = temp;
+	}
+}
+
+
+
+ANSWER ARRAY CAT) TODO
+
+
+
+ANSWER INTERLEAVE)
+public class Main{
+	public static void main(String[] args){
+		int numbers1[] = {4, 2, 3};
+		int numbers2[] = {0, 0, 0};
+		int result[] = interleave(numbers1, numbers2);
+		for(int i=0; i<result.length; i++){
+			System.out.printf("%d  ", result[i]);
+		}
+	}
+	//3 different solutions follow
+	public static int[] interleave(int numbers1[], int numbers2[]){
+		int combo[] = new int[numbers1.length*2];
+		for(int i=0; i<numbers1.length; i++){
+			combo[i*2] = numbers1[i];
+			combo[i*2+1] = numbers2[i];
+		}
+		return combo;
+	}
+	public static int[] interleave(int numbers1[], int numbers2[]){
+		int combo[] = new int[numbers1.length*2];
+		for(int i=0; i<numbers1.length*2; i++){
+			if(i%2==0){ //if i is even
+				combo[i] = numbers1[i/2];
+			}else{
+				combo[i] = numbers2[(i-1)/2];
+			}
+		}
+		return combo;
+	}
+	//This was a student solution
+	public static int[] interleave(int[] arrayA, int[] arrayB){
+		int[]returnArray = new int[arrayA.length + arrayB.length];
+		int index = 0;
+		for(int i=0; i < returnArray.length; i++){
+			returnArray[i++]=arrayA[index];
+			returnArray[i]=arrayB[index];
+			index++;			
+		}
+		return returnArray;
+	}
+}
+
+
+
+
+ANSWER ARRAY LARGER COPY) TODO
+
+
+
+ANSWER INCREASING COPY)
+public class Main{
+	public static void main(String[] args){
+		int[] numbers = {2,5,3,7,6,3,5,6,8,3};
+		int[] result = increasingCopy(numbers);
+		for(int i=0; i<result.length; i++){
+			System.out.printf("%d  ",result[i]);
+		}
+		System.out.println();
+		int[] numbers2 = {5,3,3,6,6,8,2};
+		result = increasingCopy(numbers2);
+		for(int i=0; i<result.length; i++){
+			System.out.printf("%d  ",result[i]);
+		}
+	}	
+	public static int[] increasingCopy(int numbers[]){
+		//Count how many will be copied
+		int count = 1;
+		int highest_so_far = numbers[0];
+		for(int i=0; i<numbers.length; i++){
+			if(numbers[i] > highest_so_far){
+				count++;
+				highest_so_far = numbers[i];
+			}
+		}
+		//Allocate memory for the array
+		int to_return[] = new int[count];
+		//Copy into the array.
+		to_return[0] = numbers[0];
+		count = 0;
+		for(int i=0; i<numbers.length; i++){
+			if(numbers[i] > to_return[count]){
+				count++;
+				to_return[count] = numbers[i];
+			}
+		}
+		return to_return;
+	}
+}
+
+
+
+ANSWER DIAGONAL PRINT)
+public class Main{
+	public static void main(String[] args){
+		int numbers[][] = {{4, 2, 3, 8},
+						   {0, 7, 0, 2},
+						   {5, 2, 6, 3}};
+		printDiag(numbers);
+	}
+	public static void printDiag(int numbers[][]){
+		int row = numbers.length-1;
+		int col = 0;
+		while(row>=0 && col<numbers[row].length){
+			System.out.printf("%d  ", numbers[row][col]);
+			row--;
+			col++;
+		}
+	}
+}
+
+
+
+ANSWER DIAGONAL RETURN)
+public class Main{
+	public static void main(String[] args){
+		int numbers[][] = {{4, 2, 3, 8},
+						   {0, 7, 0, 2},
+						   {5, 2, 6, 3}};
+		printDiag(numbers);
+	}
+	public static int[] returnDiag(int numbers[][]){
+		int row = numbers.length-1;
+		int col = 0;
+		int[] to_return = new int[Math.min(numbers.length, numbers[0].length)];
+		while(row>=0 && col<numbers[row].length){
+			to_return[col] = numbers[row][col];
+			row--;
+			col++;
+		}
+	}
+}
+
+
+
+ANSWER HASVALUE)
+public class Main{
+	public static void main(String[] args){
+		String words1[] = {"see", "spot", "run"};
+		boolean result = hasValue(words1, "the");
+		System.out.println(result);
+		String words2[] = {"cat", "in", "the", "hat"};
+		result = hasValue(words2, "the");
+		System.out.println(result);
+	}
+	public static boolean hasValue(String text[], String to_find){
+		for(int i=0; i<text.length; i++){
+			if(text[i].compareTo(to_find)==0){
+				return true;
+			}
+		}
+		return false;
+	}
+}
+
+
+
+ANSWER COUNT INSTANCES)
+public class Main{
+	public static void main(String[] args){
+		int numbers[] = {2,5,3,7,6,3,5,6,8,3};
+		int result = countInstances(numbers, 2);
+		System.out.println(result);
+		result = countInstances(numbers, 6);
+		System.out.println(result);
+		result = countInstances(numbers, 3);
+		System.out.println(result);
+	}	
+	public static int countInstances(int numbers[], int to_count){
+		int count = 0;
+		for(int i=0; i<numbers.length; i++){
+			if(numbers[i] == to_count){
+				count++;
+			}
+		}
+		return count;
+	}
+}
+
+
+
+ANSWER FOUR CORNER 1D) TODO
+
+
+
+ANSWER FOUR CORNER 2D)
+public class Main{
+	public static void main(String[] args){
+		int[][] test = {{1,2,3},
+						{4,5,6},
+						{7,8,9}};
+		int[][] result = fourCorners(test);
+		System.out.println(result[0][0]+" "+result[0][1]);
+		System.out.println(result[1][0]+" "+result[1][1]);
+	}
+	public static int[][] fourCorners(int matrix[][]){
+		int[][] to_return = new int[2][2];
+		int last_column = matrix[0].length-1;
+		to_return[0][0] = matrix[0][0];
+		to_return[0][1] = matrix[0][last_column];
+		int last_row = matrix.length-1;
+		to_return[1][0] = matrix[last_row][0];
+		last_column = matrix[last_row].length-1;
+		to_return[1][1] = matrix[last_row][last_column];
+		return to_return;
+	}
+}
+
+
+
+ANSWER MAGIC)
+public class Main{
+	public static void main(String[] args){
+		int[][] test = {{2,7,6},
+						{9,5,1},
+						{4,3,8}};
+		boolean result = isMagic(test);
+		System.out.println(result);
+	}
+	public static boolean isMagic(int[][] matrix){
+		//Get the sum of the first row
+		int row_sum = 0;
+		for(int i=0; i<matrix[0].length; i++){
+			row_sum = row_sum + matrix[0][i];
+		}
+		//Make sure all rows have the same sum
+		int compare_sum;
+		for(int r=1; r<matrix.length; r++){
+			compare_sum = 0;
+			for(int c=0; c<matrix[r].length; c++){
+				compare_sum = compare_sum + matrix[r][c];
+			}
+			if(row_sum != compare_sum){
+				return false;
+			}
+		}
+		//Make sure all columns have the same sum
+		for(int c=0; c<matrix[0].length; c++){
+			compare_sum = 0;
+			for(int r=0; r<matrix.length; r++){
+				compare_sum = compare_sum + matrix[r][c];
+			}
+			if(row_sum != compare_sum){
+				return false;
+			}
+		}
+		//Make sure diagonals have the same sum
+		compare_sum = 0;
+		for(int i=0; i<matrix.length && i<matrix[i].length; i++){
+			compare_sum = compare_sum + matrix[i][i];
+		}
+		if(row_sum != compare_sum){
+			return false;
+		}
+		compare_sum = 0;
+		int row = 0;
+		for(int c=matrix[row].length-1; row<matrix.length && c<matrix[row].length && c>=0; c--){
+			compare_sum = compare_sum + matrix[row][c];
+			row++;
+		}
+		if(row_sum != compare_sum){
+			return false;
+		}
+		//Must be a magic matrix
+		return true;
+	}
+}
+
+
+
+ANSWER DETERMINANT)
+public class Main{
+	public static void main(String[] args){
+		int[][] test = {{1,3},
+						{7,4}};
+		int result = determinant(test);
+		System.out.println(result);
+	}
+	public static int determinant(int matrix[][]){
+		return matrix[0][0]*matrix[1][1] - matrix[0][1]*matrix[1][0];
+	}
+}
+
+
+
+ANSWER DOTPRODUCT)
+public class Main{
+	public static void main(String[] args){
+		int[] test1 = {2, 0, 5};
+		int[] test2 = {-1, 4, 1};
+		int result = dotProduct(test1, test2);
+		System.out.println(result);
+	}
+	public static int dotProduct(int v1[], int v2[]){
+		int to_return = 0;
+		for(int i=0; i<v1.length; i++){
+			to_return = to_return + v1[i]*v2[i];
+		}
+		return to_return;
+	}
+}
+
+
+
+ANSWER ARRAYINDEXOUTOFBOUNDS)
+You used an index that was outside the bounds of the array. For instance, an array with 3 elements only supports indexes 0, 1, or 2. To avoid this in the future an if statement could be used prior to make sure the index is in bounds.
+The following code generated the error.
+public class Main {
+	public static void main(String[] args) {
+		int numbers[] = {1,2,3};
+		System.out.println(numbers[3]);
+	}
+}
+
+
+
+ANSWER CANNOT FIND SYMBOL)
+The problem is a typo. Java can't find a variable with the name my_vlaues because it should be named my_values. Presumably you initialized it by the correct name, but passed it incorrectly.
+
+
+
+ANSWER BST CONSTRUCTION)
+                12
+              8    17
+            4  9  13
+          1  6
+            5
+
+
+
+ANSWER BST INORDER) TODO
+
+
+
+ANSWER BST PREORDER) TODO
+
+
+
+ANSWER BST POSTORDER) TODO
+

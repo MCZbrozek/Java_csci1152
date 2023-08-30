@@ -1,0 +1,7 @@
+Exercise: Hello World
+
+Use the HelloWorld.mp4 walkthrough video to write a Java program that meets the following requirements:
+1. Class name is HelloWorld
+2. The program should print "Hello World!" to the output console.
+
+Attach your source code file for the exercise

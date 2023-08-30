@@ -1,0 +1,259 @@
+
+I BEGAN, BUT DID NOT FINISH CONVERTING THESE MATLAB QUESTIONS INTO REVIEW QUESTIONS FOR THIS COURSE.
+
+QUESTION TAXI FARE) Write a function called taxi_fare that computes the fare of a taxi ride. It takes two inputs: the distance in kilometers as a double and the amount of wait time in minutes (also a double). The fare is calculated like this:
+  * the first kilometer is $5
+  * every additional kilometer is $2 each
+  * every minute of waiting is $0.25
+Once a kilometer is started, it counts as a whole (in other words, you need to round up.). Wait times are also rounded up. You can assume that distance>0 and time>=0. The function returns the fare in dollars. For example, a 3.5-km ride with 2.25 minutes of wait costs $11.75.
+ANSWER TAXI FARE)
+function fare = taxi_fare(dist, time)
+dist = ceil(dist)-1;
+fare = ceil(time)*0.25;
+fare = fare + 5 + dist*2;
+end
+
+
+QUESTION MINIMAX) Write a function called minimax that takes a two-dimensional integer array, and the integer number of rows and columns, as input and returns an array containing the absolute values of the difference between the maximum and minimum valued elements in each row. For example:
+Input:
+    66    94    75    18
+	4     68    40    71
+    85    76    66     4
+Output:
+    76    67    81
+ANSWER MINIMAX)
+
+
+
+QUESTION TRIO) Write a function called trio that takes two positive integer inputs n and m. The function returns a 3n-by-m array of integers called T. The top third of T (an n-by-m subarray) is all 1s, the middle third is all 2s while the bottom third is all 3s. Here is an example in pseudocode:
+M = trio(2,4)
+M =
+     1     1     1     1
+     1     1     1     1
+     2     2     2     2
+     2     2     2     2
+     3     3     3     3
+     3     3     3     3
+ANSWER TRIO)
+
+
+
+QUESTION VALID DATE) Write a function that takes three arguments: year, month, and day. The function should return true if the given year month and day is a valid date. You will need to look up and use the number of days in each month. You will also need to account for leap year which occurs on every year that is divisible by 4. However, leap year does not occur on years that are divisible by 100 unless the year is also divisible by 400. For instance, 1900 is not a leap year, but 2000 is.
+Test your code with the following function calls:
+int result1 = validDate(1266, 6, 20); %should return true
+int result2 = validDate(2539, 12, 2); %should return true
+int result3 = validDate(2539, 1, 32); %should return false
+int result4 = validDate(1900, 2, 28); %should return true
+int result5 = validDate(1900, 2, 29); %should return false
+ANSWER VALID DATE)
+Matlab answer follows
+function valid=valid_date(year,month,day)
+	valid = isscalar(year) && isscalar(month) && isscalar(day);
+	valid = valid && month > 0 && month <= 12;
+	valid = valid && day > 0;
+	max_days = 28; %Default to a non-leap year February
+	if ismember(month, [1,3,5,7,8,10,12]) %31 day months
+		max_days = 31;
+	elseif ismember(month, [4,6,9,11]) %30 day months
+		max_days = 30;
+	elseif ~mod(year,400) || (~mod(year,4) && mod(year,100)) %leap year, then February has 29 days
+		max_days = 29;
+	end
+	valid = valid && day <= max_days;
+end
+
+
+
+QUESTION HALFSUM) Write a function called halfsum that takes a two-dimensional integer array, and the integer number of rows and columns, as input and returns the sum of the array elements that are in the diagonal and are to the right of it. The diagonal is defined as the set of elements whose column and row indexes are the same. In other words, the function adds up the element in the uppertriangular part of the matrix.
+For example, with the matrix below as input
+A = 
+     1     2     3
+     4     5     6
+     7     8     9
+The function would return 1+2+3 + 5+6 + 9 = 26
+
+
+
+QUESTION NEXT PRIME) Write a function called next_prime that takes a scalar positive integer input n as input. The function should use a while-loop to find and return the smallest prime number that is greater than n. The following code can be modified to find out if a number, x, is prime.
+int is_prime = 1;
+for(int i=2; i<x/2; i++){
+	if(x%i==0){
+		is_prime = 0;
+		break;
+	}
+}
+if(is_prime)
+	printf("The number is prime.");
+else
+	printf("The number is NOT prime.");
+Here are some example runs:
+int answer = next_prime(2); //answer = 3
+int answer = next_prime(8); //answer = 11
+int answer = next_prime(12345678); //answer = 12345701
+
+
+
+
+QUESTION MAX SEQUENCE) Write a function called maxSequence that takes an integer array of numbers and a positive integer, n, as inputs. The function needs to find the n consecutive integers in the array whose sum is the largest possible. In other words, if the input is [1 2 3 4 5 4 3 2 1] and n is 3, it will find 4 5 and 4 because their sum of 13 is the largest of any 3 consecutive numbers. If multiple such sequences exist, maxSequence returns the first one.
+Here are a few example runs:
+int total = maxSequence([1 2 3 4 5 4 3 2 1],3) //total = 13
+int total = maxSequence([1 2 3 4 5 4 3 2 1],2) //total = 9
+
+
+
+QUESTION SPARSE MATRIX) A sparse matrix is a large matrix (think 2D integer array) with almost all elements of the same value (typically zero). The normal representation of a sparse matrix takes up lots of memory when the useful information can be captured with much less. A possible way to represent a sparse matrix is with a struct with 4 fields:
+	an integer for the number of rows,
+	an integer for the number of columns,
+	an integer for the default value in the array,
+	and an n x 3 integer array.
+Each row of the integer array represents one element of the sparse matrix that has a value other than the default. The three values in each row are the row index, the column index and the actual value. Write a function called sparse2matrix that takes a single input of a structure formatted as described and returns a two dimensional integer array. Consider the following run:
+struct SparseRepresentation sparserep = {2, 3, 0, {{1 2 3},{2 2 -3}} };
+int matrix[][] = sparse2matrix(sparserep)
+matrix =
+    0     3     0
+    0    -3     0
+
+
+NOTE: Going from matrix2sparse would be a cool exercise too. Hardest part is figuring out what the most common value should be, but that's not impossible especially if the values are guaranteed to be between 0 and 99, for example.
+
+
+QUESTION CITY DISTANCES) The attached Distances.csv file contains a spreadsheet with the pairwise distances in miles of the top 100 US cities by population. The first row and first column contain the city names using the following format: city name comma space capitalized state abbreviation, e.g., Nashville, TN. Note that the very first cell of the spresheet, A1, is blank.
+Write a function called getDistance that accepts two character array inputs representing the names of two cities. The function returns the distance between them. For example, the call getDistance('Seattle, WA','Miami, FL') should return 3723. If one or both of the specified cities are not in the file, the function returns -1.
+
+
+
+QUESTION CHAR COUNTER) Write a function called charCounter that counts the number of a certain character in a text file. The function takes two input arguments, a char array of the filename and the char to be counted in the file. The function returns the number of characters found. If the file is not found or the character is not a valid char, the function return -1. As an example, consider the following run. The file "simple.txt" contains a single line: "This file should have exactly three a-s..."
+int charnum = char_counter("simple.txt",'a'); //charnum = 3
+
+
+TODO LEFT OFF HERE
+
+QUESTION SADDLE) Write a function called saddle that finds saddle points in the input matrix M. For the purposes of this problem, a saddle point is defined as an element whose value is greater than or equal to every element in its row, and less than or equal to every element in its column. Note that there may be more than one saddle point in M. Return a matrix called indices that has exactly two columns. Each row of indices corresponds to one saddle point with the first element of the row containing the row index of the saddle point and the second element containing the column index. If there is no saddle point in M, then indices is the empty array.
+
+%Code to call your function:
+% create an interesting surface
+[X,Y] = meshgrid(-15:0.5:10,-10:0.5:10);
+Z = (X.^2-Y.^2)';
+% find saddle points
+indices = saddle(Z)
+% plot surface
+surf(Z);
+hold on
+% mark saddle points with red dots in the same figure
+for ii = 1:size(indices,1)
+    h = scatter3(indices(ii,2),indices(ii,1),Z(indices(ii,1),indices(ii,2)),'red','filled');
+    h.SizeData = 120;
+end
+% adjust viewpoint
+view(-115,14);
+hold off
+
+A: Correct answer is one saddle point in row 31 column 21.
+
+%My solution
+function indices = saddle(M)
+    indices = [];
+    [rows,columns] = size(M);
+    for r = 1:rows
+        row = M(r,:);
+        for c = 1:columns
+            col = M(:,c);
+            value = M(r,c);
+            if value>=row & value<=col
+                indices = [indices; r c];
+            end
+        end
+    end
+end
+
+
+
+
+
+Q: Write a function called blur that blurs the input image. The function is to be called like this
+output = blur(img,w);
+where img, the input image is a two-dimensional matrix of grayscale pixel values between 0 and 255. Blurring is to be carried out by averaging the pixel values in the vicinity of every pixel. Specifically, the output pixel value is the mean of the pixels in a square submatrix of size 2w+1 where the given pixel sits in the center. For example, if w is 1, then we use a 3x3 matrix, that is, we average all the neighboring pixels of the given pixel and itself. Only use valid pixels when portions of the blurring matrix fall outside the image. For example, the blurred value corresponding to w=1 at index (1,1) would be the mean of of elements (1,1), (1, 2), (2,1) and (2, 2). Both input, img, and output, output are of type uint8.
+MainCampus.png can be used as a test image.
+
+%Code to call your function:
+img = imread('MainCampus.png');
+output = blur(img,4); %lower numbers will be less blurry
+imshow(output);
+
+A: My solution:
+function result = blur(img,w)
+    result = img;
+    [rows,columns] = size(img);
+    for r = 1:rows
+        top = max(r-w,1);
+        bottom = min(rows,r+w);
+        for c = 1:columns
+            left = max(c-w, 1);
+            right = min(columns, c+w);
+            submatrix = img(top:bottom, left:right);
+            result(r,c) = mean(submatrix(:));
+        end
+    end
+end
+
+
+
+
+
+Q: Write a function called echo_gen that adds an echo effect to an audio recording. An echo is the original signal delayed and attenuated. Therefore, you will first need to compute the echo and then add it to the original signal with the correct offset. The function is to be called like this
+output = echo_gen(input, fs, delay, amp);
+where input is a column vector with values between -1 and 1 representing a time series of digitized sound data. The input argument fs is the sampling rate. The sampling rate specifies how many samples we have in the data each second. For example, an audio CD uses 44,100 samples per second. The input argument delay represent the delay of the echo in seconds. That is, the echo should start after delay seconds have passed from the start of the audio signal. Finally, amp specifies the amplification of the echo. While typically this is a value less than 1 because the echo is not as loud, your function should work if amp is greater than 1.
+The output of the function is a column vector containing the original sound with the echo superimposed. The output vector will be longer than the input vector if the delay is not zero (round to the nearest number of points needed to get the delay, as opposed to floor or ceil). A sound recording has values between -1 and 1, so if the echo causes some values to be outside of this range, you will need to scale the entire vector, so that all values are within the range while retaining their relative amplitudes.
+MATLAB has several sample audio files included that you can try: splat, gong, and handel are a few examples. Try the following:
+load gong % loads two variables, y and Fs
+sound(y, Fs) % Outputs sound
+To hear the sound you will need to use desktop MATLAB or MATLAB Online.
+(Note that we are assuming mono audiofiles. You can load your own audio files using the audioread function in MATLAB ( https:/ww.mathworks.com/help/matlab/ref/audioread.html ). If the audio data has two columns, it is a stereo file, so use only one column of the data when testing your file.)
+
+Code to call your function:
+
+clear; close all; clc;
+% Load splat which adds y and Fs to the workspace
+load splat
+% Call echo_gen to create the new audio data
+delay = 0.25;
+amplification = 0.6;
+output = echo_gen(y, Fs, delay, amplification);
+% The time between points is 1/Fs;
+dt = 1/Fs;
+% Plot the original sound
+plot(0:dt:dt*(length(y)-1), y);
+title("Original");
+% Plot the new data to see visualize the echo
+figure;
+plot(0:dt:dt*(length(output)-1), output);
+title("Original with echo");
+
+%sound (output, Fs) % Uncomment in MATLAB to listen to the new sound data
+
+A: My solution:
+function output = echo_gen(input, fs, delay, amp)
+    %Copy the input and amplify it by amp
+    echo = input * amp;
+    %get an index offset based on delay in seconds
+    %and the sampling rate fs in samples/sec as a
+    %conversion factor
+    offset = uint64(delay * fs); %round to integer
+    %Create a new longer vector of output
+    %add the echo to the input
+    echo = [zeros(offset,1); echo];
+    input = [input; zeros(offset,1)];
+    output = input + echo;
+    %scale the entire vector so that the values
+    %are between -1 and 1
+    largest = max(output(:));
+    if largest>1
+        output = output ./ largest;
+    end
+    smallest = min(output(:));
+    if smallest < -1
+        output = output ./ abs(smallest);
+    end
+end
+
+

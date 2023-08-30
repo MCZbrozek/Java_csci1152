@@ -1,0 +1,24 @@
+
+Week 9 Video Exercise
+
+Watch these two videos and post a comment or question about them in the discussion forum. Then also reply to someone else's post. Your comment does not have to be long, but it needs to indicate that you learned something from, or considered an aspect of, the videos.
+
+You don't need to upload or post anything here. I will check the forum and give points for posting.
+
+Bubble sort: youtube.com/watch?v=uMY0fxiB_MI&list=PLg3AZRFBfHLVKmYA8de-Au1MLJn8G4dD8&index=1
+
+Insertion sort: youtube.com/watch?v=7wEsF7IpWhw&list=PLg3AZRFBfHLVKmYA8de-Au1MLJn8G4dD8&index=2
+
+
+
+
+
+Week 10 Video Exercise
+
+Watch these two videos and post a comment or question about them in the discussion forum. Then also reply to someone else's post. Your comment does not have to be long, but it needs to indicate that you learned something from, or considered an aspect of, the videos.
+
+You don't need to upload or post anything here. I will check the forum and give points for posting.
+
+Merge sort: youtube.com/watch?v=hL-etXWXCos&list=PLg3AZRFBfHLVKmYA8de-Au1MLJn8G4dD8&index=3
+
+Quick sort: youtube.com/watch?v=15APgIcGip0&list=PLg3AZRFBfHLVKmYA8de-Au1MLJn8G4dD8&index=4

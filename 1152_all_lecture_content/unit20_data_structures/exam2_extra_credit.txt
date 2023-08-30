@@ -1,0 +1,112 @@
+
+For up to 10 extra credit points on exam 2, complete the following exercises:
+
+1. Write a method that takes an integer array as input and returns an integer array. The method must use a Java stack data structure to reverse the order of values in the integer array. You should import the stack. A stack is ideal for reverse because the data in a stack is popped out in the opposite order as it was put in.
+
+
+2. Write a method that takes a 2d integer array as input and prints out the values along the diagonal of the array.  The method should return void. For instance,
+Inputs:
+	array = {{3,7,1},
+			 {2,2,5},
+			 {9,8,0}};
+Output: 3, 2, 0
+
+Example 2:
+Inputs:
+	array = {{3,7,1},
+			 {2,2,5}};
+Output: 3, 2
+
+
+3. Describe what the method call stack is used for, what sort of data is pushed on the stack, and when data is popped off the stack.
+
+
+Please turn in all your code by email in a single attached Java file. You can turn in the answer to part 3 as a comment in the same java file.
+
+
+================================ SOLUTION FOLLOWS
+
+//Estefan Gonzales
+//egonzales237@cnm.edu
+//11.16.2020
+//CSCI 1152
+
+//Extra credit
+
+import java.util.Arrays;
+import java.util.Stack;
+
+public class ExtraCredit
+{
+    public static void main(String[] args)
+	{
+        int [] originalArray = {1,2,3,4,5,6};
+        int [] reversedArray = reverseWithStack(originalArray);
+        System.out.println("Original array: "+Arrays.toString(originalArray));
+        System.out.println("The reversed array: "+Arrays.toString(reversedArray));
+        System.out.println();
+
+		
+		
+		//Initialize example array
+        int [][] twoDimensionalArray = new int[5][5];
+		int init = 10;
+        for (int i = 0; i < twoDimensionalArray.length; i++){
+            for (int j = 0; j < twoDimensionalArray[i].length; j++){
+                twoDimensionalArray[i][j] = init;
+                init += 10;
+            }
+        }
+		//Print the example array
+        for (int row = 0; row < twoDimensionalArray.length; row++){
+            for (int col = 0; col < twoDimensionalArray[row].length; col++){
+                System.out.printf("%-4d ",twoDimensionalArray[row][col]);
+            }
+            System.out.println();
+        }
+        diagonalPrint(twoDimensionalArray);
+    }
+
+
+    public static void diagonalPrint(int [][] array)
+	{
+        StringBuilder sb = new StringBuilder();
+        System.out.println();
+        System.out.printf("Diagonal section of the array: %n");
+        for (int k = 0; k < array.length; k++){
+            System.out.println(sb.toString()+array[k][k]);
+            sb.append("     ");
+        }
+    }
+
+
+    //Stack reverse method
+    public static int[] reverseWithStack(int[] arr){
+        Stack<Integer> stack = new Stack<>();
+        int [] array = new int[arr.length];
+        for (int i = 0; i < arr.length; i++){
+            stack.push(arr[i]);
+        }
+        for (int j = 0; j< array.length; j++){
+            array[j] = stack.pop();
+        }
+        return array;
+    }
+}
+
+
+
+/* Method Stack (Neal wrote this answer)
+The method stack is used to order methods execution. When a method is called, 
+any arguments passed to the method, as well as the return address (so that the
+program can get back to where the method was called from once the method is
+finished) are pushed on the stack. If main calls method A and method A calls 
+method B and method B calls method C, then the stack has information in order
+from top to bottom as follows:
+C
+B
+A
+main
+Local variables to the method are also pushed on the stack. When a method returns, the local variables are all popped off and any returned value is sent to the address specified by the return address on the stack. Then the next method down is at the top of the stack and is ready for its further execution.
+All stacks operate on their elements in a Last-In First-Out order in contrast with queues which are First-In First-Out.
+*/

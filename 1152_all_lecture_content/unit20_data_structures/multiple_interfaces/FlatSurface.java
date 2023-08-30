@@ -1,0 +1,3 @@
+interface FlatSurface {
+	double calcArea();
+}

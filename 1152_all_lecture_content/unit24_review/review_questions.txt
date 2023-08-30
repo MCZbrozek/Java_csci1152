@@ -1,0 +1,238 @@
+
+QUESTION STACK PAPER) The following values are currently stored in a stack:
+top of the stack   p,a,a,p,p,r   bottom of the stack
+Write pseudocode using only the following three instructions to print out 'paper' from the stack:
+  pop()
+  print(pop())
+  push(e)
+Assume that pop returns the value removed.
+
+
+
+QUESTION QUEUE STAR) The following values are currently stored in a queue:
+front of the queue   s,s,t,a,a   back of the queue
+Write pseudocode using only the following three instructions to print out 'star' from the queue:
+  dequeue()
+  print(dequeue())
+  enqueue(r)
+Assume that dequeue returns the value removed.
+
+
+
+QUESTION COMPILATION REMOVAL) Multiple Choice: Part of the compilation process is removing comments and white space.
+A)  Just comments are removed
+B)  Just white space is removed
+C)  True, both are removed
+D)  False, neither are removed
+
+
+
+A handful of the next questions refer to the following code:
+
+public class Main{
+	public static void main(String[] args){
+		//SECTION 1
+		int[] t = {56,68,62,72,78,71,70,63,74,69,71};
+		int c = 0;
+		for(int i=0; i<t.length; i++){
+			if(68 <= t[i] && t[i] <= 72){
+				c++;
+			}
+		}
+		//SECTION 2
+		int[] t2 = new int[c];
+		c = 0;
+		//SECTION 3
+		for(int i=0; i<t.length; i++){
+			if(68 <= t[i] && t[i] <= 72){
+				t2[c++] = t[i];
+			}
+		}
+	}
+}
+
+QUESTION SECTIONS A) Why does section 1 have to be before section 2?
+
+QUESTION SECTIONS B) Why does section 2 have to be before section 3?
+
+QUESTION SECTIONS C) What is the problem with swapping the order of the two lines of code in section 2?
+
+
+public class Main{
+	public static void main(String[] args){
+		//SECTION 1
+		int[] temperatures = {56,68,62,72,78,71,70,63,74,69,71};
+		int count = 0;
+		for(int i=0; i<temperatures.length; i++){
+			if(68 <= temperatures[i] && temperatures[i] <= 72){
+				count++;
+			}
+		}
+		//SECTION 2
+		int[] room_temperature = new int[count];
+		int index = 0;
+		//SECTION 3
+		for(int i=0; i<temperatures.length; i++){
+			if(68 <= temperatures[i] && temperatures[i] <= 72){
+				room_temperature[index++] = temperatures[i];
+			}
+		}
+	}
+}
+
+QUESTION SECTIONS D) Consider the modified version of the program above. Describe in your own words what the program, as a whole, does.
+
+QUESTION SECTIONS E) Consider the modified version of the program above. Explain in your own words the importance of choosing informative variable names.
+
+
+
+QUESTION BAD SORT) Write a method that takes a double array as input. The method then sorts the array using the following BAD sorting algorithm: Pick 2 elements of the array at random by their index and if the lower index value is greater than the higher index value, swap them. Your method should repeat this compare-and-swap approach 1000 times. The method should return void.
+
+
+
+QUESTION COLLATZ STEP) Write a method that takes a single integer input. If the integer is even, divide it by two. If the integer is odd, multiply it by three and add one. In either case, return the result.
+Challenge: make your method 6 lines of code or less.
+
+
+
+QUESTION DYNAMIC ARRAY) A dynamic array starts at size 1 and doubles in size every time it fills up. If 100 values are added to the dynamic array one at a time, how many times does it double in size.
+Challenge: How many empty spaces are available in the array at the end of this process?
+
+
+
+QUESTION REF OR VALUE AND MEMORY) Passing a variable to a method by value usually requires more memory than passing a variable by reference. Why?
+
+
+
+QUESTION STRING REPEAT) Write a method that takes a String named word and an int named n as input and returns a String consisting of n copies of word.
+Example: Input=cat,3 Output=catcatcat
+
+
+
+QUESTION ARRAY COPY) Write a method that takes two integer arrays as input. Assume the arrays are the same length. The method should copy the values of the second array into the first array.
+
+
+
+QUESTION ARRAY REVERSE) Write a method that takes an integer array as input. The method should reverse the order of the values in the array. The method does not return anything.
+Challenge: Accomplish the reversal without declaring a second array.
+For example, if the input array has the following values, [4,3,3,6,8,2], then after the method runs, the array will have the following values [2,8,6,3,3,4].
+
+
+
+QUESTION COPY EVENS INDEX) Write a method that takes an integer array as input. The method should copy only the values located at even indexes to a new array and return it.
+For example, if the input array has the following values, [4,3,3,6,8,2], then the returned array will have the following values [4,3,8].
+
+
+
+QUESTION COPY EVENS VALUE) Write a method that takes an integer array as input. The method should copy only the even values to a new array and return it.
+For example, if the input array has the following values, [4,3,3,6,8,2], then the returned array will have the following values [4,6,8,2].
+
+
+
+QUESTION COPY LATTER HALF) Write a method that takes an integer array as input. The method should copy only the values in the second half of the array into a new array and return it.
+For example, if the input array has the following values, [5,3,3,6,8,2], then the returned array will have the following values [6,8,2]. If the input array has odd length, you can decide whether or not the middle value should be included in the output.
+
+
+
+QUESTION DOUBLE COPY FIRST HALF) Write a method that takes an integer array as input. The method should copy only the values in the first half of the array into a new array and return it. However, the values should be copied twice.
+For example, if the input array has the following values, [5,3,3,6,8,2], then the returned array will have the following values [5,3,3]. If the input array has odd length, you can decide whether or not the middle value should be included in the output.
+
+
+
+QUESTION ARRAY DOUBLE REVERSE) Write a method that takes two integer arrays as input. Assume the arrays are the same length. The method should swap and reverse the values in both arrays without using a third array.
+For example, if the input arrays are [5,3,3] and [6,8,2], then after the method runs, the values in the arrays should be [2,8,6] and [3,3,5].
+
+
+
+QUESTION ARRAY CAT) Write a method that takes as input two integer arrays. The method should return a new integer array containing the concatenated values of the two input arrays. For instance:
+Input: [4,2,3] and [8,3]
+Returned value: [4,2,3,8,3]
+
+
+
+QUESTION INTERLEAVE) Write a method that takes as input two integer arrays of equal length. The method should return a new integer array created by interleaving the values of the two input arrays starting with the first input array. For instance:
+Input: [4,2,3] and [0,0,0]
+Returned value: [4,0,2,0,3,0]
+
+
+
+QUESTION ARRAY LARGER COPY) Write a method that takes as input two integer arrays. Assume the arrays are the same length. The method should return a new integer array containing the greater of the values in the arrays. In other words, each pair of values will be compared and only the larger value will be copied into the new array. For instance:
+Input: [4,2,3] and [8,3,1]
+Returned value: [8,3,3]
+
+
+
+QUESTION INCREASING COPY) Write a method that takes an integer array as input. The method should copy the first value in the input array into a new array. The method then iterates through the input array copying over only values that are greater than the most recently copied value. The new array should be returned.
+For example, if the input array has the following values, [5,3,3,6,6,8,2], then the returned array will have the following values [5,6,8]. 5 is copied because it's the first value. Neither 3 is copied because they are both less than 5. The first 6 is copied becuase it is greater than 5. The second 6 is skipped because it's not greater than the most recently copied value, 6. The 8 is copied because it is greater than 6. The 2 is not copied.
+
+
+
+QUESTION DIAGONAL PRINT) Write a method that takes as input a two-dimensional integer array. The method should print the values in the array along the diagonal from the BOTTOM LEFT to the TOP RIGHT. The method should not return any value.
+
+
+
+QUESTION DIAGONAL RETURN) Write a method that takes as input a two-dimensional integer array. The method should return a one-dimensional integer array containing the values in the array along the diagonal from the BOTTOM LEFT to the TOP RIGHT.
+
+
+
+QUESTION HASVALUE) Write a hasValue method that takes as input a String array and a String to find. The method should return true if the value to find is found in the array, and return false otherwise.
+
+
+
+QUESTION COUNT INSTANCES) Write a countInstances method that takes as input an integer array and an integer value to count. The method should return the integer count of how many times the value is found in the array.
+
+
+
+QUESTION FOUR CORNER 1D) Write a method that takes as input a two-dimensional integer array. The method should return a one-dimensional integer array containing the values at the four corners of the input array.
+
+
+
+QUESTION FOUR CORNER 2D) Write a method that takes as input a two-dimensional integer array. The method should return a 2x2 integer array containing the values at the four corners of the input array in their corresponding locations in the 2x2 array.
+
+
+
+QUESTION MAGIC) Write a method named isMagic that takes as input a two-dimensional integer array. The method should return true if the array is a magic matrix and false otherwise. A magic matrix has the property that the sum of each individual column is the same, and the sum of each individual row is the same, and the sum of the two diagonals is the same as those values as well. For example, the following is a magic matrix. Every single row, column, and diagonal adds up to 15.
+ 2 7 6
+ 9 5 1
+ 4 3 8
+
+
+
+QUESTION DETERMINANT) Write a method named determinant that takes as input a two-dimensional integer array and returns the determinant of the input. You may assume that the input array is 2x2. The determinant is calculated as follows. Suppose your matrix is organized like this:
+ a b
+ c d
+Then the determinant is a*d-b*c
+
+
+
+QUESTION DOTPRODUCT) Write a method named dotProduct that takes as input two integer arrays of equal length and returns the dot product of the input arrays. You may assume that the input arrays are equal length. The dot product is calculated by multiplying each pair of values in the arrays and then adding all the results together. For example:
+The dot product of [2, 0, 5] and [-1, 4, 1] is
+2*-1 + 0*4 + 5*1 = 3
+
+
+
+
+QUESTION ARRAYINDEXOUTOFBOUNDS) I got the following exception when attempting to print a particular value from an array. What did I do wrong and how could I avoid this exception in the future?
+Exception in thread "main" java.lang.ArrayIndexOutOfBoundsException: 3
+        at Main.main(Main.java:6)
+
+
+
+QUESTION CANNOT FIND SYMBOL) I got the following error when attempting to sort an array named my_values. What did I do wrong?
+Main.java:5: error: cannot find symbol
+                sort(my_vlaues);
+                        ^
+  symbol:   variable my_vlaues
+  location: class Main
+1 error
+
+
+
+QUESTION BST CONSTRUCTION) The following values are added to a binary search tree in this order. Sketch the resulting binary search tree:  12, 8, 4, 9, 6, 17, 13, 5, 1
+
+QUESTION BST INORDER) Referring to the previous BST question: In what order are the values in the tree printed in the case of an in-order traversal of the tree?
+
+QUESTION BST PREORDER) Referring to the earlier BST question: In what order are the values in the tree printed in the case of an pre-order traversal of the tree?
+
+QUESTION BST POSTORDER) Referring to the earlier BST question: In what order are the values in the tree printed in the case of a post-order traversal of the tree?
+
