@@ -45,6 +45,7 @@ public class BusTicket {
             System.out.println("Your bus ticket is: " + ticketType);
         }
         ;
-
+        // Close input
+        input.close();
     }
 }
