@@ -14,11 +14,14 @@ import java.util.Scanner;
 public class BusTicket {
     public static void main(String[] args) {
         // Create Scanner
-        Scanner inputAge = new Scanner(System.in);
+        Scanner input = new Scanner(System.in);
 
+        // Ask user for their name
+        System.out.println("Welcom to the Bus Station. What is your name? ");
+        String userName = input.nextLine();
         // Ask the user for their age
-        System.out.println("Hello. What is your age? ");
-        int userAge = inputAge.nextInt();
+        System.out.println("Hello, " + userName + "!" + " How old are you? ");
+        int userAge = input.nextInt();
 
         // Create a variable called ticketType
         String ticketType;
@@ -32,7 +35,16 @@ public class BusTicket {
             ticketType = "Child Ticket";
         }
         ;
-        // Print out the result in the form: "The Answer is: "+myAnswer
-        System.out.println("Your bus ticket is: " + ticketType);
+
+        // Say something clever to the customer -
+        if (ticketType == "Child Ticket") {
+            System.out.println("You must be accompanied by an adult to purchase a " + ticketType + "."
+                    + " Please find an adult so we can sell more tickets!");
+        } else {
+            // Print out the result in the form: "The Answer is: "+myAnswer
+            System.out.println("Your bus ticket is: " + ticketType);
+        }
+        ;
+
     }
 }
