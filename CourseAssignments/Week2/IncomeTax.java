@@ -75,9 +75,20 @@ public class IncomeTax {
         System.out.printf("--------------------------------------%n");
         // Print out total income, adjusted gross income and total tax with $$ to two
         // decimal places
-        System.out.printf("Total Income:" + "%10s" + "%,15.2f %n", "$", totalIncome);
-        System.out.printf("Adjusted Income:" + "%7s" + "%,15.2f %n", "$", adjustedIncome);
-        System.out.printf("Total Tax:" + "%13s" + "%,15.2f %n", "$", totalTax);
+        // System.out.printf("Total Income:" + "%10s" + "%,15.2f %n", "$", totalIncome);
+        // System.out.printf("Adjusted Income:" + "%7s" + "%,15.2f %n", "$",
+        // adjustedIncome);
+        // System.out.printf("Total Tax:" + "%13s" + "%,15.2f %n", "$", totalTax);
+        // System.out.printf("--------------------------------------%n");
+
+        // Better answer
+        String totalIncomef = String.format("$%.2f", totalIncome);
+        String adjustedIncomef = String.format("$%.2f", adjustedIncome);
+        String totalTaxf = String.format("$%.2f", totalTax);
+
+        System.out.printf("Total Income: %20s%n", totalIncomef);
+        System.out.printf("Adjusted Income: %17s%n", adjustedIncomef);
+        System.out.printf("Total Tax: %23s%n", totalTaxf);
         System.out.printf("--------------------------------------%n");
 
         // Close input
