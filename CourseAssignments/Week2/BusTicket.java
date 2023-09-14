@@ -17,7 +17,7 @@ public class BusTicket {
         Scanner input = new Scanner(System.in);
 
         // Ask user for their name
-        System.out.println("Welcom to the Bus Station. What is your name? ");
+        System.out.println("Welcome to the Bus Station. What is your name? ");
         String userName = input.nextLine();
         // Ask the user for their age
         System.out.println("Hello, " + userName + "!" + " How old are you? ");
