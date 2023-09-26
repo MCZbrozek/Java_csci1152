@@ -1,3 +1,9 @@
+// Name: Michael Zbrozek
+// Class: 1152:101
+// Assignment: Week3: Loop Assignment
+// Purpose: Practice with loops
+// FileName: "LoopAssignment.java"
+
 import java.util.Scanner;
 import java.lang.Math;
 
@@ -10,7 +16,7 @@ public class LoopAssignment {
 		 * What is the loop control variable?
 		 * Answer in a comment right here:
 		 */
-		// Loop control variable: _________
+		// Loop control variable: __difference_______
 		/*
 		 * HINT: The loop control variable
 		 * is the variable that is BOTH used
@@ -22,7 +28,8 @@ public class LoopAssignment {
 		 * document.
 		 */
 		Scanner input = new Scanner(System.in);
-		System.out.print("\nGive me a positive number and I will find its square root: ");
+		System.out.println("----- PART 1 -----");
+		System.out.print("Give me a positive number and I will find its square root: ");
 		double x = input.nextDouble();
 		double guess = 2;
 		double error = 0.0001;
@@ -35,39 +42,29 @@ public class LoopAssignment {
 		System.out.printf("%-22s %f\n", "Compared to the actual:", Math.sqrt(x));
 
 		/* PART 2: BAD INPUT */
-		/*
-		 * The logarithm of zero or
-		 * negative numbers is undefined.
-		 * Write a while loop in the space
-		 * indicated below that forces the
-		 * user to enter a new value for x
-		 * while x is less than or equal to
-		 * zero.
-		 * HINT: You will use the Scanner to
-		 * request nextDouble inside the loop.
-		 * You should also print out a prompt
-		 * indicating what went wrong and
-		 * what the user should do differently.
-		 */
+		System.out.println("\n----- PART 2 -----");
+		System.out.println(
+				"A logarithm (or log) is the mathematical expression used to answer the question:\nHow many times must one 'base' number be multiplied by itself to get some other particular number?\nLet's take the log of a number");
 		System.out.print("\nGive me a POSITIVE number: ");
 		x = input.nextDouble();
-		// YOUR CODE GOES HERE
+		while (x <= 0) {
+			System.out.print("The log of 0 or negative numbers is undefined, please enter a POSITIVE number: ");
+			x = input.nextDouble();
+		}
 		double logBase10 = Math.log10(x);
 		System.out.print("\nThe log base 10 of " + x + " is " + logBase10);
 
 		/* PART 3: UNTIL */
-		/*
-		 * Use a while loop to determine
-		 * the smallest power of two greater
-		 * then one million. In other words,
-		 * Create a variable and set it
-		 * equal to two, then double that
-		 * variable until it is greater
-		 * than one million. Print out the
-		 * result. (just the number that exceeds 1,000,000)
-		 */
-		// YOUR CODE GOES HERE
+		System.out.println("\n\n----- PART 3 -----");
 
+		int millionOrBust = 2;
+
+		while (millionOrBust <= 1000000) {
+			millionOrBust = millionOrBust * 2;
+			// System.out.println(millionOrBust);
+		}
+
+		System.out.println("The smallest power of two less than one million is: " + millionOrBust);
 		/*
 		 * An example interaction with a correct version of this assignment follows:
 		 * 
