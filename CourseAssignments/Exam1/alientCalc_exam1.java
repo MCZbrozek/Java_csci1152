@@ -80,6 +80,15 @@ public class alientCalc_exam1 {
         System.out.println("Give me an interger to divide by zero: ");
         // Assign the int to a variable
         int glernVar = input.nextInt();
+        // Protect against zero numerator
+        while (glernVar == 0) {
+            if (glernVar == 0) {
+                System.out.println("Zero by Zero? Boring! Give me another number: ");
+                glernVar = input.nextInt();
+            } else {
+                break;
+            }
+        }
         // Tell the user what calc we are performing
         System.out.printf("Glern\ncacluating %d divided by z-e-r-o\nGlern\n", glernVar);
         // Perform Calc
